@@ -11,6 +11,9 @@ contract CarseNFT is ERC721, Ownable {
 
     constructor() ERC721("CarseNFT", "CarseNFT") {}
 
+		/**
+		* tokenURI is ipfs://<hash>
+		*/
     function mintNft(address receiver, string memory tokenURI) external onlyOwner returns (uint256) {
         _tokenIds.increment();
 
@@ -20,4 +23,11 @@ contract CarseNFT is ERC721, Ownable {
 
         return newNftTokenId;
     }
+
+		/**
+		* [0, allTokens()] is an array of all the minted tokens IDs 
+		*/
+		function allTokens() public returns (uint256) {
+			return _tokenIds.current();
+		}
 }

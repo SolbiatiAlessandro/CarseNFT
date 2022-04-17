@@ -2,7 +2,7 @@ async function main(){
 	const Contract = await ethers.getContractFactory("CarseNFT");
 
 	// this is the constructor of the smart contract
-	const contract = await Contract.deploy();
+	const contract = await Contract.deploy({gasPrice:35000000000});
 	console.log(`deployed at ${ contract.address }`);
 }
 

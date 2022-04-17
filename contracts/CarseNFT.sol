@@ -17,8 +17,8 @@ contract CarseNFT is ERC721 {
 		returns (uint256)
 
 	{
-		require(hashes[hash] != 1);
-		hashes[hash] = 1;
+		require(hash_already_taken[hash] != 1);
+		hash_already_taken[hash] = 1;
 		_tokenIDs.increment();
 		uint256 newItemID = _tokenIDs.current();
 
@@ -30,7 +30,7 @@ contract CarseNFT is ERC721 {
 	/**
 	* [0, allTokens()] is an array of all the minted tokens IDs 
 	*/
-	function allTokens() public return (uint8){
+	function allTokens() public returns (uint256) {
 		return _tokenIDs.current();
 	}
 
@@ -42,7 +42,7 @@ contract CarseNFT is ERC721 {
     return string(abi.encodePacked(baseURI, hash));
    }
 
-	function _baseURI() internal view virtual returns (string memory) {
+	function _baseURI() internal view virtual override returns (string memory) {
 			return "ipfs://";
 	}
 }

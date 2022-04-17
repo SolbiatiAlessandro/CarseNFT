@@ -40,8 +40,9 @@ contractReadMessage()
 */
 
 async function contractMint(){
-	const tx = await carseNFT.mint(signer.getAddress(), "QmPmxpTxVQVWX88hFdNYghUkmufPNZWpxZShusdffLNFBH");
-	await tx.wait();
+	const tx = await carseNFT.mintNft(signer.getAddress(), "QmPmxpTxVQVWX88hFdNYghUkmufPNZWpxZShusdffLNFBH");
+	const res = await tx.wait();
+	console.log(res);
 }
 
 async function getURI(){
@@ -55,4 +56,4 @@ async function getTokens(){
 	console.log(res);
 }
 
-contractMint();
+getURI();
